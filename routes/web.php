@@ -12,6 +12,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::prefix('admin')->group(function(){
+    Route::get('login', [AuthController::class, 'login'])->name('admin.auth.login');
+    Route::post('login', [AuthController::class, 'checkLogin'])->name('admin.auth.checklogin');
+
+
+});
+
 
 Route::prefix('admin')->group(function(){
     Route::prefix('category')->group(function(){
